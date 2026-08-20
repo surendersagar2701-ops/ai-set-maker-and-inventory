@@ -1,1 +1,5 @@
-
+<!-- Add this to index.html before app.js -->
+<script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
