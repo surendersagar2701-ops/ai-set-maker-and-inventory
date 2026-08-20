@@ -33,14 +33,14 @@
                         <p>Smart Inventory • Smarter Business</p>
                     </div>
                 </div>
-                <button class="settings-btn" onclick="window.showSettings()">⚙️</button>
+                <button class="settings-btn" onclick="showSettings()">⚙️</button>
             </div>
 
             <div class="search-container">
-                <input type="text" id="homeSearch" placeholder="🔍 Search product, colour or SKU..." oninput="window.searchProducts(this.value)">
+                <input type="text" id="homeSearch" placeholder="🔍 Search product, colour or SKU..." oninput="searchProducts(this.value)">
             </div>
 
-            <div class="hero-banner" onclick="window.showAISetMaker()">
+            <div class="hero-banner" onclick="showAISetMaker()">
                 <div class="hero-content">
                     <span class="ai-badge">✨ AI POWERED</span>
                     <h2>Smart Inventory,</h2>
@@ -51,22 +51,22 @@
             </div>
 
             <div class="quick-actions">
-                <div class="action-card" onclick="window.showAISetMaker()">
+                <div class="action-card" onclick="showAISetMaker()">
                     <div class="action-icon">✨</div>
                     <h3>AI Set Maker</h3>
                     <p>Match colour & stock</p>
                 </div>
-                <div class="action-card" onclick="window.showBulkAdd()">
+                <div class="action-card" onclick="showBulkAdd()">
                     <div class="action-icon">📚</div>
                     <h3>Bulk Add</h3>
                     <p>AI/File/QR</p>
                 </div>
-                <div class="action-card" onclick="window.showAddProduct()">
+                <div class="action-card" onclick="showAddProduct()">
                     <div class="action-icon">➕</div>
                     <h3>Add Product</h3>
                     <p>Manual entry</p>
                 </div>
-                <div class="action-card" onclick="window.showNewSale()">
+                <div class="action-card" onclick="showNewSale()">
                     <div class="action-icon">🧾</div>
                     <h3>New Sale</h3>
                     <p>Billing</p>
@@ -74,19 +74,19 @@
             </div>
 
             <div class="inventory-overview">
-                <div class="stat-card" onclick="window.showInventory()">
+                <div class="stat-card" onclick="showInventory()">
                     <span class="stat-number" id="totalProducts">0</span>
                     <span class="stat-label">📦 Products</span>
                 </div>
-                <div class="stat-card" onclick="window.showInventory()">
+                <div class="stat-card" onclick="showInventory()">
                     <span class="stat-number" id="totalSections">0</span>
                     <span class="stat-label">🗂️ Sections</span>
                 </div>
-                <div class="stat-card warning" onclick="window.showInventory()">
+                <div class="stat-card warning" onclick="showInventory()">
                     <span class="stat-number" id="lowStockCount">0</span>
                     <span class="stat-label">⚠️ Low Stock</span>
                 </div>
-                <div class="stat-card danger" onclick="window.showInventory()">
+                <div class="stat-card danger" onclick="showInventory()">
                     <span class="stat-number" id="outOfStockCount">0</span>
                     <span class="stat-label">🚫 Out Stock</span>
                 </div>
@@ -95,7 +95,7 @@
             <div class="sections-container">
                 <div class="section-header">
                     <h3>📦 Inventory Sections</h3>
-                    <button onclick="window.showCreateSection()" class="add-section-btn">➕</button>
+                    <button onclick="showCreateSection()" class="add-section-btn">➕</button>
                 </div>
                 <div id="sectionList"></div>
             </div>
@@ -109,16 +109,16 @@
         <!-- INVENTORY SCREEN -->
         <div id="inventoryScreen" class="screen">
             <div class="screen-header">
-                <button class="back-btn" onclick="window.showHome()">←</button>
+                <button class="back-btn" onclick="showHome()">←</button>
                 <h2>📦 Inventory</h2>
-                <button onclick="window.showAddProduct()" class="header-action">➕</button>
+                <button onclick="showAddProduct()" class="header-action">➕</button>
             </div>
             <div class="filters">
-                <input type="text" id="inventorySearch" placeholder="🔍 Search..." oninput="window.filterInventory()">
-                <select id="sectionFilter" onchange="window.filterInventory()">
+                <input type="text" id="inventorySearch" placeholder="🔍 Search..." oninput="filterInventory()">
+                <select id="sectionFilter" onchange="filterInventory()">
                     <option value="">All Sections</option>
                 </select>
-                <select id="colourFilter" onchange="window.filterInventory()">
+                <select id="colourFilter" onchange="filterInventory()">
                     <option value="">All Colours</option>
                 </select>
             </div>
@@ -128,9 +128,9 @@
         <!-- AI SET MAKER -->
         <div id="aiSetMakerScreen" class="screen">
             <div class="screen-header">
-                <button class="back-btn" onclick="window.showHome()">←</button>
+                <button class="back-btn" onclick="showHome()">←</button>
                 <h2>✨ AI Set Maker</h2>
-                <button onclick="window.viewSavedDesigns()" class="header-action">💾</button>
+                <button onclick="viewSavedDesigns()" class="header-action">💾</button>
             </div>
             <div class="ai-container">
                 <div class="upload-area" onclick="document.getElementById('sareeImage').click()">
@@ -139,7 +139,7 @@
                         <p>Tap to select saree image</p>
                         <p class="sub-text">Gallery or Camera</p>
                     </div>
-                    <input type="file" id="sareeImage" accept="image/*" capture="environment" onchange="window.detectRealAIColour(this)">
+                    <input type="file" id="sareeImage" accept="image/*" capture="environment" onchange="detectRealAIColour(this)">
                 </div>
                 <div id="colourResult"></div>
                 <div id="suggestedSet"></div>
@@ -149,16 +149,16 @@
         <!-- BULK ADD -->
         <div id="bulkAddScreen" class="screen">
             <div class="screen-header">
-                <button class="back-btn" onclick="window.showHome()">←</button>
+                <button class="back-btn" onclick="showHome()">←</button>
                 <h2>📚 Bulk Add</h2>
             </div>
             <div class="bulk-options">
-                <div class="bulk-card" onclick="window.showRealAIImport()">
+                <div class="bulk-card" onclick="showRealAIImport()">
                     <div class="bulk-icon">🖼️</div>
                     <h3>AI Image/File Import</h3>
                     <p>Upload images or files</p>
                 </div>
-                <div class="bulk-card" onclick="window.openRealScanner()">
+                <div class="bulk-card" onclick="openRealScanner()">
                     <div class="bulk-icon">📷</div>
                     <h3>Scan & Add</h3>
                     <p>QR/SKU Scanner</p>
@@ -170,16 +170,16 @@
         <!-- ADD PRODUCT -->
         <div id="addProductScreen" class="screen">
             <div class="screen-header">
-                <button class="back-btn" onclick="window.showHome()">←</button>
+                <button class="back-btn" onclick="showHome()">←</button>
                 <h2>➕ Add Product</h2>
             </div>
-            <form id="productForm" onsubmit="window.saveProduct(event)">
+            <form id="productForm" onsubmit="saveProduct(event)">
                 <div class="image-upload" onclick="document.getElementById('productImage').click()">
                     <div id="productImagePreview">
                         <span>📷</span>
                         <p>Tap to add image</p>
                     </div>
-                    <input type="file" id="productImage" accept="image/*" capture="environment" onchange="window.previewProductImage(this)">
+                    <input type="file" id="productImage" accept="image/*" capture="environment" onchange="previewProductImage(this)">
                 </div>
                 <div class="form-group">
                     <label>Product Name *</label>
@@ -236,13 +236,13 @@
         <!-- NEW SALE -->
         <div id="newSaleScreen" class="screen">
             <div class="screen-header">
-                <button class="back-btn" onclick="window.showHome()">←</button>
+                <button class="back-btn" onclick="showHome()">←</button>
                 <h2>🧾 New Sale</h2>
-                <button onclick="window.resetSale()" class="header-action">🔄</button>
+                <button onclick="resetSale()" class="header-action">🔄</button>
             </div>
             <div class="sale-search">
-                <input type="text" id="saleSearch" placeholder="🔍 Search or scan SKU..." oninput="window.searchSaleProducts(this.value)">
-                <button onclick="window.openScannerFromSale()" class="scan-btn">📷</button>
+                <input type="text" id="saleSearch" placeholder="🔍 Search or scan SKU..." oninput="searchSaleProducts(this.value)">
+                <button onclick="openScannerFromSale()" class="scan-btn">📷</button>
             </div>
             <div id="saleProducts"></div>
             <div class="sale-summary">
@@ -252,7 +252,7 @@
                 </div>
                 <div class="sale-row">
                     <span>Discount:</span>
-                    <input type="number" id="saleDiscount" value="0" min="0" oninput="window.updateTotal()">
+                    <input type="number" id="saleDiscount" value="0" min="0" oninput="updateTotal()">
                 </div>
                 <div class="sale-row total">
                     <span>TOTAL:</span>
@@ -264,33 +264,33 @@
                 <input type="text" id="customerPhone" placeholder="Phone Number">
             </div>
             <div class="sale-payment">
-                <button onclick="window.setPayment('Cash')" class="payment-btn">💰 Cash</button>
-                <button onclick="window.setPayment('UPI')" class="payment-btn">📱 UPI</button>
-                <button onclick="window.setPayment('Card')" class="payment-btn">💳 Card</button>
+                <button onclick="setPayment('Cash')" class="payment-btn">💰 Cash</button>
+                <button onclick="setPayment('UPI')" class="payment-btn">📱 UPI</button>
+                <button onclick="setPayment('Card')" class="payment-btn">💳 Card</button>
             </div>
-            <button onclick="window.generateBill()" class="bill-btn">🧾 Generate Bill</button>
+            <button onclick="generateBill()" class="bill-btn">🧾 Generate Bill</button>
         </div>
 
         <!-- MORE SCREEN -->
         <div id="moreScreen" class="screen">
             <div class="screen-header">
-                <button class="back-btn" onclick="window.showHome()">←</button>
+                <button class="back-btn" onclick="showHome()">←</button>
                 <h2>☰ More</h2>
             </div>
             <div class="more-menu">
-                <div class="more-item" onclick="window.showBills()">
+                <div class="more-item" onclick="showBills()">
                     <span>📋 Bills</span>
                     <span>›</span>
                 </div>
-                <div class="more-item" onclick="window.showReports()">
+                <div class="more-item" onclick="showReports()">
                     <span>📊 Reports</span>
                     <span>›</span>
                 </div>
-                <div class="more-item" onclick="window.showDailyParcha()">
+                <div class="more-item" onclick="showDailyParcha()">
                     <span>📝 Daily Parcha</span>
                     <span>›</span>
                 </div>
-                <div class="more-item" onclick="window.showSettings()">
+                <div class="more-item" onclick="showSettings()">
                     <span>⚙️ Settings</span>
                     <span>›</span>
                 </div>
@@ -301,23 +301,23 @@
 
     <!-- BOTTOM NAVIGATION -->
     <nav id="bottomNav">
-        <button class="nav-btn active" data-screen="homeScreen" onclick="window.navigateTo('homeScreen')">
+        <button class="nav-btn active" data-screen="homeScreen" onclick="navigateTo('homeScreen')">
             <span>🏠</span>
             <label>Home</label>
         </button>
-        <button class="nav-btn" data-screen="inventoryScreen" onclick="window.navigateTo('inventoryScreen')">
+        <button class="nav-btn" data-screen="inventoryScreen" onclick="navigateTo('inventoryScreen')">
             <span>📦</span>
             <label>Inventory</label>
         </button>
-        <button class="nav-btn" data-screen="aiSetMakerScreen" onclick="window.navigateTo('aiSetMakerScreen')">
+        <button class="nav-btn" data-screen="aiSetMakerScreen" onclick="navigateTo('aiSetMakerScreen')">
             <span>✨</span>
             <label>AI</label>
         </button>
-        <button class="nav-btn" data-screen="newSaleScreen" onclick="window.navigateTo('newSaleScreen')">
+        <button class="nav-btn" data-screen="newSaleScreen" onclick="navigateTo('newSaleScreen')">
             <span>🧾</span>
             <label>Sale</label>
         </button>
-        <button class="nav-btn" data-screen="moreScreen" onclick="window.navigateTo('moreScreen')">
+        <button class="nav-btn" data-screen="moreScreen" onclick="navigateTo('moreScreen')">
             <span>☰</span>
             <label>More</label>
         </button>
@@ -330,7 +330,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <h3 id="modalTitle">Modal</h3>
-            <button class="modal-close" onclick="window.closeModal()">✕</button>
+            <button class="modal-close" onclick="closeModal()">✕</button>
         </div>
         <div id="modalBody"></div>
     </div>
