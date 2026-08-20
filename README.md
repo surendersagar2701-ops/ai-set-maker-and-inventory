@@ -1,1 +1,1 @@
-# ai-set-maker-and-inventory
+Bangle-Store-AI
