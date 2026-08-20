@@ -1,5 +1,5 @@
 const CONFIG = {
-    // 🔑 Google Cloud Vision API Key - Already Included
+    // 🔑 Google Cloud Vision API Key
     GOOGLE_VISION_API_KEY: 'AIzaSyBxXAE5nJtA6843uJ5_mvdQ-hsxk16fAl0',
     
     VISION_API_URL: 'https://vision.googleapis.com/v1/images:annotate',
@@ -76,28 +76,54 @@ function rgbToHex(r, g, b) {
 
 function getColourName(hex) {
     const colourMap = {
-        '#ff69b4': 'Rani Pink', '#ff1493': 'Deep Pink', '#ff6b6b': 'Red',
-        '#ff4757': 'Crimson', '#2ed573': 'Green', '#1e90ff': 'Blue',
-        '#ffa502': 'Orange', '#ff6348': 'Tomato', '#a29bfe': 'Lavender',
-        '#fd79a8': 'Light Pink', '#e84393': 'Magenta', '#6c5ce7': 'Purple',
-        '#00cec9': 'Teal', '#fdcb6e': 'Yellow', '#e17055': 'Terracotta',
-        '#00b894': 'Mint', '#0984e3': 'Royal Blue', '#d63031': 'Maroon',
-        '#f8a5c2': 'Soft Pink', '#778beb': 'Periwinkle'
+        '#ff69b4': 'Rani Pink',
+        '#ff1493': 'Deep Pink',
+        '#ff6b6b': 'Red',
+        '#ff4757': 'Crimson',
+        '#2ed573': 'Green',
+        '#1e90ff': 'Blue',
+        '#ffa502': 'Orange',
+        '#ff6348': 'Tomato',
+        '#a29bfe': 'Lavender',
+        '#fd79a8': 'Light Pink',
+        '#e84393': 'Magenta',
+        '#6c5ce7': 'Purple',
+        '#00cec9': 'Teal',
+        '#fdcb6e': 'Yellow',
+        '#e17055': 'Terracotta',
+        '#00b894': 'Mint',
+        '#0984e3': 'Royal Blue',
+        '#d63031': 'Maroon',
+        '#f8a5c2': 'Soft Pink',
+        '#778beb': 'Periwinkle'
     };
-    let closest = 'Unknown', closestDist = Infinity;
+    let closest = 'Unknown';
+    let closestDist = Infinity;
     for (const [key, value] of Object.entries(colourMap)) {
         const dist = colourDistance(hex, key);
-        if (dist < closestDist) { closestDist = dist; closest = value; }
+        if (dist < closestDist) {
+            closestDist = dist;
+            closest = value;
+        }
     }
     return closest;
 }
 
 function colourDistance(hex1, hex2) {
-    const c1 = hexToRGB(hex1), c2 = hexToRGB(hex2);
-    return Math.sqrt(Math.pow(c1.r - c2.r, 2) + Math.pow(c1.g - c2.g, 2) + Math.pow(c1.b - c2.b, 2));
+    const c1 = hexToRGB(hex1);
+    const c2 = hexToRGB(hex2);
+    return Math.sqrt(
+        Math.pow(c1.r - c2.r, 2) +
+        Math.pow(c1.g - c2.g, 2) +
+        Math.pow(c1.b - c2.b, 2)
+    );
 }
 
 function hexToRGB(hex) {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) } : { r: 0, g: 0, b: 0 };
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : { r: 0, g: 0, b: 0 };
 }
