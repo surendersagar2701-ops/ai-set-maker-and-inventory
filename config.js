@@ -5,7 +5,7 @@
 const CONFIG = {
     // Google Cloud Vision API Key
     // Get from: https://console.cloud.google.com/apis/credentials
-    GOOGLE_VISION_API_KEY: 'AIzaSyBxAAE5njTA6843uJ5_mvdQ-hsx1k6fA10',
+     'AIzaSyBxAAE5njTA6843uJ5_mvdQ-hsx1k6fA10',
     
     // Google Vision API Endpoint
     VISION_API_URL: 'https://vision.googleapis.com/v1/images:annotate',
