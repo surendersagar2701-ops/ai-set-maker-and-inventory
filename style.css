@@ -1,6 +1,5 @@
 /* ============================================
    BANGLE STORE AI - COMPLETE STYLES
-   Mobile-First Design
    ============================================ */
 
 :root {
@@ -36,9 +35,6 @@ body {
     user-select: none;
 }
 
-/* ============================================
-   APP CONTAINER
-   ============================================ */
 #app {
     max-width: 480px;
     margin: 0 auto;
@@ -47,9 +43,6 @@ body {
     position: relative;
 }
 
-/* ============================================
-   STATUS BAR
-   ============================================ */
 #statusBar {
     display: flex;
     justify-content: space-between;
@@ -64,9 +57,6 @@ body {
     z-index: 100;
 }
 
-/* ============================================
-   SCREENS
-   ============================================ */
 .screen {
     display: none;
     padding: 0 16px 16px;
@@ -82,9 +72,6 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ============================================
-   SCREEN HEADER
-   ============================================ */
 .screen-header {
     display: flex;
     align-items: center;
@@ -108,9 +95,7 @@ body {
     color: var(--text);
 }
 
-/* ============================================
-   HOME SCREEN
-   ============================================ */
+/* Header */
 .header {
     display: flex;
     justify-content: space-between;
@@ -152,7 +137,6 @@ body {
     cursor: pointer;
 }
 
-/* Search */
 .search-container {
     margin: 8px 0 16px;
 }
@@ -173,7 +157,6 @@ body {
     box-shadow: 0 0 0 4px rgba(233, 69, 96, 0.1);
 }
 
-/* Hero Banner */
 .hero-banner {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     border-radius: var(--radius);
@@ -217,7 +200,6 @@ body {
     font-size: 48px;
 }
 
-/* Quick Actions */
 .quick-actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -255,7 +237,6 @@ body {
     margin-top: 2px;
 }
 
-/* Inventory Overview */
 .inventory-overview {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -297,7 +278,6 @@ body {
     color: var(--danger);
 }
 
-/* Sections */
 .sections-container {
     background: white;
     border-radius: var(--radius);
@@ -351,7 +331,6 @@ body {
     color: var(--muted);
 }
 
-/* Recent Products */
 .recent-products {
     background: white;
     border-radius: var(--radius);
@@ -398,9 +377,7 @@ body {
     color: var(--muted);
 }
 
-/* ============================================
-   INVENTORY
-   ============================================ */
+/* Inventory */
 .filters {
     display: flex;
     gap: 8px;
@@ -418,7 +395,6 @@ body {
     background: white;
 }
 
-/* Product Cards */
 .product-card {
     background: white;
     border-radius: var(--radius);
@@ -492,9 +468,7 @@ body {
     color: #c62828;
 }
 
-/* ============================================
-   AI SET MAKER
-   ============================================ */
+/* AI Set Maker */
 .ai-container {
     padding: 4px 0;
 }
@@ -534,11 +508,6 @@ body {
     border-radius: 12px;
 }
 
-/* Colour Result */
-#colourResult {
-    margin: 16px 0;
-}
-
 .colour-match {
     background: white;
     border-radius: var(--radius);
@@ -565,23 +534,7 @@ body {
     border-bottom: none;
 }
 
-.match-bar {
-    height: 4px;
-    background: var(--border);
-    border-radius: 4px;
-    margin: 4px 0 8px;
-    overflow: hidden;
-}
-
-.match-bar .fill {
-    height: 100%;
-    border-radius: 4px;
-    background: var(--accent);
-}
-
-/* ============================================
-   BULK ADD
-   ============================================ */
+/* Bulk Add */
 .bulk-options {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -617,9 +570,7 @@ body {
     color: var(--muted);
 }
 
-/* ============================================
-   ADD PRODUCT FORM
-   ============================================ */
+/* Add Product Form */
 .image-upload {
     background: white;
     border: 2px dashed var(--border);
@@ -698,9 +649,7 @@ body {
     transform: scale(0.98);
 }
 
-/* ============================================
-   NEW SALE
-   ============================================ */
+/* New Sale */
 .sale-search {
     display: flex;
     gap: 8px;
@@ -787,7 +736,6 @@ body {
     cursor: pointer;
 }
 
-/* Sale Summary */
 .sale-summary {
     background: white;
     border-radius: var(--radius);
@@ -821,7 +769,6 @@ body {
     margin-top: 4px;
 }
 
-/* Customer & Payment */
 .sale-customer {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -872,9 +819,7 @@ body {
     margin-top: 12px;
 }
 
-/* ============================================
-   MORE MENU
-   ============================================ */
+/* More Menu */
 .more-menu {
     background: white;
     border-radius: var(--radius);
@@ -905,9 +850,7 @@ body {
     font-weight: 500;
 }
 
-/* ============================================
-   BOTTOM NAVIGATION
-   ============================================ */
+/* Bottom Navigation */
 #bottomNav {
     position: fixed;
     bottom: 0;
@@ -948,9 +891,7 @@ body {
     margin-top: 2px;
 }
 
-/* ============================================
-   MODAL
-   ============================================ */
+/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -1001,9 +942,32 @@ body {
     padding: 16px 20px 20px;
 }
 
-/* ============================================
-   RESPONSIVE - LAPTOP
-   ============================================ */
+.empty-card {
+    padding: 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* QR Reader */
+#qr-reader {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#qr-reader video {
+    border-radius: 12px;
+}
+
+#qr-reader__scan_region {
+    background: black;
+    border-radius: 12px;
+}
+
+/* Responsive */
 @media (min-width: 768px) {
     #app {
         max-width: 480px;
@@ -1033,9 +997,6 @@ body {
     }
 }
 
-/* ============================================
-   SCROLLBAR
-   ============================================ */
 ::-webkit-scrollbar {
     width: 4px;
 }
@@ -1046,63 +1007,5 @@ body {
 
 ::-webkit-scrollbar-thumb {
     background: var(--border);
-    border-radius: 4px;
-}
-
-/* ============================================
-   UTILITY
-   ============================================ */
-.text-center { text-align: center; }
-.text-muted { color: var(--muted); }
-.mt-8 { margin-top: 8px; }
-.mt-16 { margin-top: 16px; }
-.mb-8 { margin-bottom: 8px; }
-.mb-16 { margin-bottom: 16px; }
-.gap-8 { gap: 8px; }
-.flex { display: flex; }
-.flex-1 { flex: 1; }
-.items-center { align-items: center; }
-.justify-between { justify-content: space-between; }
-.empty-card {
-    padding: 20px;
-    text-align: center;
-    color: var(--muted);
-    font-size: 13px;
-}
-
-/* QR Reader */
-#qr-reader {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-#qr-reader video {
-    border-radius: 12px;
-}
-
-#qr-reader__scan_region {
-    background: black;
-    border-radius: 12px;
-}
-
-/* Progress Bar */
-progress {
-    appearance: none;
-    width: 100%;
-    height: 8px;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-progress::-webkit-progress-bar {
-    background-color: var(--border);
-    border-radius: 4px;
-}
-
-progress::-webkit-progress-value {
-    background-color: var(--accent);
     border-radius: 4px;
 }
