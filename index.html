@@ -2,301 +2,182 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bangle Store AI</title>
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="assets/icon-192.png">
-    <meta name="theme-color" content="#1a1a2e">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
 </head>
 <body>
 
 <div id="app">
-    <!-- STATUS BAR -->
     <div id="statusBar">
         <span>🏪 Bangle Store AI</span>
         <span id="time">12:00</span>
     </div>
 
-    <!-- SCREENS -->
-    <div id="screens">
-        
-        <!-- HOME SCREEN -->
-        <div id="homeScreen" class="screen active">
-            <div class="header">
-                <div class="logo-container">
-                    <img src="assets/logo.png" class="app-logo" id="appLogo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2248%22 height=%2248%22%3E%3Crect width=%2248%22 height=%2248%22 fill=%22%231a1a2e%22/%3E%3Ctext x=%2224%22 y=%2232%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2224%22%3E🏪%3C/text%3E%3C/svg%3E'">
-                    <div>
-                        <h1>Bangle Store AI</h1>
-                        <p>Smart Inventory • Smarter Business</p>
-                    </div>
-                </div>
-                <button class="settings-btn" onclick="showSettings()">⚙️</button>
-            </div>
-
-            <div class="search-container">
-                <input type="text" id="homeSearch" placeholder="🔍 Search product, colour or SKU..." oninput="searchProducts(this.value)">
-            </div>
-
-            <div class="hero-banner" onclick="showAISetMaker()">
-                <div class="hero-content">
-                    <span class="ai-badge">✨ AI POWERED</span>
-                    <h2>Smart Inventory,</h2>
-                    <h2>Smarter Business.</h2>
-                    <p>Match any saree colour instantly</p>
-                </div>
-                <div class="hero-icon">🏪</div>
-            </div>
-
-            <div class="quick-actions">
-                <div class="action-card" onclick="showAISetMaker()">
-                    <div class="action-icon">✨</div>
-                    <h3>AI Set Maker</h3>
-                    <p>Match colour & stock</p>
-                </div>
-                <div class="action-card" onclick="showBulkAdd()">
-                    <div class="action-icon">📚</div>
-                    <h3>Bulk Add</h3>
-                    <p>AI/File/QR</p>
-                </div>
-                <div class="action-card" onclick="showAddProduct()">
-                    <div class="action-icon">➕</div>
-                    <h3>Add Product</h3>
-                    <p>Manual entry</p>
-                </div>
-                <div class="action-card" onclick="showNewSale()">
-                    <div class="action-icon">🧾</div>
-                    <h3>New Sale</h3>
-                    <p>Billing</p>
+    <!-- HOME SCREEN -->
+    <div id="homeScreen" class="screen active">
+        <div class="header">
+            <div class="logo-container">
+                <div>
+                    <h1>🏪 Bangle Store AI</h1>
+                    <p>Smart Inventory • Smarter Business</p>
                 </div>
             </div>
+            <button class="settings-btn" onclick="showSettings()">⚙️</button>
+        </div>
 
-            <div class="inventory-overview">
-                <div class="stat-card" onclick="showInventory()">
-                    <span class="stat-number" id="totalProducts">0</span>
-                    <span class="stat-label">📦 Products</span>
-                </div>
-                <div class="stat-card" onclick="showInventory()">
-                    <span class="stat-number" id="totalSections">0</span>
-                    <span class="stat-label">🗂️ Sections</span>
-                </div>
-                <div class="stat-card warning" onclick="showInventory()">
-                    <span class="stat-number" id="lowStockCount">0</span>
-                    <span class="stat-label">⚠️ Low Stock</span>
-                </div>
-                <div class="stat-card danger" onclick="showInventory()">
-                    <span class="stat-number" id="outOfStockCount">0</span>
-                    <span class="stat-label">🚫 Out Stock</span>
-                </div>
+        <div class="search-container">
+            <input type="text" id="homeSearch" placeholder="🔍 Search product, colour or SKU...">
+        </div>
+
+        <div class="hero-banner" onclick="showAISetMaker()">
+            <div class="hero-content">
+                <span class="ai-badge">✨ AI POWERED</span>
+                <h2>Smart Inventory,</h2>
+                <h2>Smarter Business.</h2>
+                <p>Match any saree colour instantly</p>
             </div>
+            <div class="hero-icon">🏪</div>
+        </div>
 
-            <div class="sections-container">
-                <div class="section-header">
-                    <h3>📦 Inventory Sections</h3>
-                    <button onclick="showCreateSection()" class="add-section-btn">➕</button>
-                </div>
-                <div id="sectionList"></div>
+        <div class="quick-actions">
+            <div class="action-card" onclick="showAISetMaker()">
+                <div class="action-icon">✨</div>
+                <h3>AI Set Maker</h3>
+                <p>Match colour & stock</p>
             </div>
-
-            <div class="recent-products">
-                <h3>🕐 Recent Products</h3>
-                <div id="recentProducts"></div>
+            <div class="action-card" onclick="showBulkAdd()">
+                <div class="action-icon">📚</div>
+                <h3>Bulk Add</h3>
+                <p>AI/File/QR</p>
+            </div>
+            <div class="action-card" onclick="showAddProduct()">
+                <div class="action-icon">➕</div>
+                <h3>Add Product</h3>
+                <p>Manual entry</p>
+            </div>
+            <div class="action-card" onclick="showNewSale()">
+                <div class="action-icon">🧾</div>
+                <h3>New Sale</h3>
+                <p>Billing</p>
             </div>
         </div>
 
-        <!-- INVENTORY SCREEN -->
-        <div id="inventoryScreen" class="screen">
-            <div class="screen-header">
-                <button class="back-btn" onclick="showHome()">←</button>
-                <h2>📦 Inventory</h2>
-                <button onclick="showAddProduct()" class="header-action">➕</button>
+        <div class="inventory-overview">
+            <div class="stat-card" onclick="showInventory()">
+                <span class="stat-number" id="totalProducts">0</span>
+                <span class="stat-label">📦 Products</span>
             </div>
-            <div class="filters">
-                <input type="text" id="inventorySearch" placeholder="🔍 Search..." oninput="filterInventory()">
-                <select id="sectionFilter" onchange="filterInventory()">
-                    <option value="">All Sections</option>
-                </select>
-                <select id="colourFilter" onchange="filterInventory()">
-                    <option value="">All Colours</option>
-                </select>
+            <div class="stat-card" onclick="showInventory()">
+                <span class="stat-number" id="totalSections">0</span>
+                <span class="stat-label">🗂️ Sections</span>
             </div>
-            <div id="inventoryList"></div>
-        </div>
-
-        <!-- AI SET MAKER -->
-        <div id="aiSetMakerScreen" class="screen">
-            <div class="screen-header">
-                <button class="back-btn" onclick="showHome()">←</button>
-                <h2>✨ AI Set Maker</h2>
-                <button onclick="viewSavedDesigns()" class="header-action">💾</button>
+            <div class="stat-card warning" onclick="showInventory()">
+                <span class="stat-number" id="lowStockCount">0</span>
+                <span class="stat-label">⚠️ Low Stock</span>
             </div>
-            <div class="ai-container">
-                <div class="upload-area" onclick="document.getElementById('sareeImage').click()">
-                    <div id="imagePreview">
-                        <span>📷</span>
-                        <p>Tap to select saree image</p>
-                        <p class="sub-text">Gallery or Camera</p>
-                    </div>
-                    <input type="file" id="sareeImage" accept="image/*" capture="environment" onchange="detectRealAIColour(this)">
-                </div>
-                <div id="colourResult"></div>
-                <div id="suggestedSet"></div>
+            <div class="stat-card danger" onclick="showInventory()">
+                <span class="stat-number" id="outOfStockCount">0</span>
+                <span class="stat-label">🚫 Out Stock</span>
             </div>
         </div>
+    </div>
 
-        <!-- BULK ADD -->
-        <div id="bulkAddScreen" class="screen">
-            <div class="screen-header">
-                <button class="back-btn" onclick="showHome()">←</button>
-                <h2>📚 Bulk Add</h2>
-            </div>
-            <div class="bulk-options">
-                <div class="bulk-card" onclick="showRealAIImport()">
-                    <div class="bulk-icon">🖼️</div>
-                    <h3>AI Image/File Import</h3>
-                    <p>Upload images or files</p>
-                </div>
-                <div class="bulk-card" onclick="openRealScanner()">
-                    <div class="bulk-icon">📷</div>
-                    <h3>Scan & Add</h3>
-                    <p>QR/SKU Scanner</p>
-                </div>
-            </div>
-            <div id="bulkList"></div>
+    <!-- INVENTORY SCREEN -->
+    <div id="inventoryScreen" class="screen">
+        <div class="screen-header">
+            <button class="back-btn" onclick="showHome()">←</button>
+            <h2>📦 Inventory</h2>
+            <button onclick="showAddProduct()" class="header-action">➕</button>
         </div>
-
-        <!-- ADD PRODUCT -->
-        <div id="addProductScreen" class="screen">
-            <div class="screen-header">
-                <button class="back-btn" onclick="showHome()">←</button>
-                <h2>➕ Add Product</h2>
-            </div>
-            <form id="productForm" onsubmit="saveProduct(event)">
-                <div class="image-upload" onclick="document.getElementById('productImage').click()">
-                    <div id="productImagePreview">
-                        <span>📷</span>
-                        <p>Tap to add image</p>
-                    </div>
-                    <input type="file" id="productImage" accept="image/*" capture="environment" onchange="previewProductImage(this)">
-                </div>
-                <div class="form-group">
-                    <label>Product Name *</label>
-                    <input type="text" id="productName" required>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Colour *</label>
-                        <input type="text" id="productColour" required placeholder="e.g., Rani Pink">
-                    </div>
-                    <div class="form-group">
-                        <label>Colour Preview</label>
-                        <input type="color" id="colourPreview" value="#ff69b4">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Size *</label>
-                        <input type="text" id="productSize" required placeholder="e.g., 2.4">
-                    </div>
-                    <div class="form-group">
-                        <label>SKU *</label>
-                        <input type="text" id="productSKU" required placeholder="e.g., VB-RANI-24">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Quantity *</label>
-                    <input type="number" id="productQuantity" required min="0">
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Purchase Price (₹)</label>
-                        <input type="number" id="productPurchasePrice" step="0.01">
-                    </div>
-                    <div class="form-group">
-                        <label>Selling Price (₹) *</label>
-                        <input type="number" id="productSellingPrice" required step="0.01">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Section *</label>
-                    <select id="productSection" required>
-                        <option value="">Select Section</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Notes</label>
-                    <textarea id="productNotes" rows="2"></textarea>
-                </div>
-                <button type="submit" class="save-btn">💾 Save Product</button>
-            </form>
+        <div id="inventoryList">
+            <div class="empty-card">No products added yet</div>
         </div>
+    </div>
 
-        <!-- NEW SALE -->
-        <div id="newSaleScreen" class="screen">
-            <div class="screen-header">
-                <button class="back-btn" onclick="showHome()">←</button>
-                <h2>🧾 New Sale</h2>
-                <button onclick="resetSale()" class="header-action">🔄</button>
-            </div>
-            <div class="sale-search">
-                <input type="text" id="saleSearch" placeholder="🔍 Search or scan SKU..." oninput="searchSaleProducts(this.value)">
-                <button onclick="openScannerFromSale()" class="scan-btn">📷</button>
-            </div>
-            <div id="saleProducts"></div>
-            <div class="sale-summary">
-                <div class="sale-row">
-                    <span>Subtotal:</span>
-                    <span id="subtotal">₹0</span>
-                </div>
-                <div class="sale-row">
-                    <span>Discount:</span>
-                    <input type="number" id="saleDiscount" value="0" min="0" oninput="updateTotal()">
-                </div>
-                <div class="sale-row total">
-                    <span>TOTAL:</span>
-                    <span id="totalAmount">₹0</span>
-                </div>
-            </div>
-            <div class="sale-customer">
-                <input type="text" id="customerName" placeholder="Customer Name">
-                <input type="text" id="customerPhone" placeholder="Phone Number">
-            </div>
-            <div class="sale-payment">
-                <button onclick="setPayment('Cash')" class="payment-btn">💰 Cash</button>
-                <button onclick="setPayment('UPI')" class="payment-btn">📱 UPI</button>
-                <button onclick="setPayment('Card')" class="payment-btn">💳 Card</button>
-            </div>
-            <button onclick="generateBill()" class="bill-btn">🧾 Generate Bill</button>
+    <!-- AI SET MAKER -->
+    <div id="aiSetMakerScreen" class="screen">
+        <div class="screen-header">
+            <button class="back-btn" onclick="showHome()">←</button>
+            <h2>✨ AI Set Maker</h2>
         </div>
-
-        <!-- MORE SCREEN -->
-        <div id="moreScreen" class="screen">
-            <div class="screen-header">
-                <button class="back-btn" onclick="showHome()">←</button>
-                <h2>☰ More</h2>
-            </div>
-            <div class="more-menu">
-                <div class="more-item" onclick="showBills()">
-                    <span>📋 Bills</span>
-                    <span>›</span>
-                </div>
-                <div class="more-item" onclick="showReports()">
-                    <span>📊 Reports</span>
-                    <span>›</span>
-                </div>
-                <div class="more-item" onclick="showDailyParcha()">
-                    <span>📝 Daily Parcha</span>
-                    <span>›</span>
-                </div>
-                <div class="more-item" onclick="showSettings()">
-                    <span>⚙️ Settings</span>
-                    <span>›</span>
-                </div>
+        <div class="ai-container">
+            <div class="upload-area" onclick="alert('📷 Image Upload Clicked!')">
+                <span>📷</span>
+                <p>Tap to select saree image</p>
             </div>
         </div>
+    </div>
 
+    <!-- BULK ADD -->
+    <div id="bulkAddScreen" class="screen">
+        <div class="screen-header">
+            <button class="back-btn" onclick="showHome()">←</button>
+            <h2>📚 Bulk Add</h2>
+        </div>
+        <div class="bulk-options">
+            <div class="bulk-card" onclick="alert('🖼️ AI Import Clicked!')">
+                <div class="bulk-icon">🖼️</div>
+                <h3>AI Image/File Import</h3>
+            </div>
+            <div class="bulk-card" onclick="alert('📷 Scanner Clicked!')">
+                <div class="bulk-icon">📷</div>
+                <h3>Scan & Add</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADD PRODUCT -->
+    <div id="addProductScreen" class="screen">
+        <div class="screen-header">
+            <button class="back-btn" onclick="showHome()">←</button>
+            <h2>➕ Add Product</h2>
+        </div>
+        <div class="form-group">
+            <label>Product Name *</label>
+            <input type="text" id="productName" placeholder="Enter product name">
+        </div>
+        <button class="save-btn" onclick="alert('✅ Product Saved! (Demo)')">💾 Save Product</button>
+    </div>
+
+    <!-- NEW SALE -->
+    <div id="newSaleScreen" class="screen">
+        <div class="screen-header">
+            <button class="back-btn" onclick="showHome()">←</button>
+            <h2>🧾 New Sale</h2>
+        </div>
+        <div class="sale-search">
+            <input type="text" placeholder="🔍 Search products...">
+            <button class="scan-btn" onclick="alert('📷 Scanner Opened!')">📷</button>
+        </div>
+        <div class="empty-card">Add products to sale</div>
+        <button class="bill-btn" onclick="alert('🧾 Bill Generated! (Demo)')">🧾 Generate Bill</button>
+    </div>
+
+    <!-- MORE SCREEN -->
+    <div id="moreScreen" class="screen">
+        <div class="screen-header">
+            <button class="back-btn" onclick="showHome()">←</button>
+            <h2>☰ More</h2>
+        </div>
+        <div class="more-menu">
+            <div class="more-item" onclick="alert('📋 Bills Clicked!')">
+                <span>📋 Bills</span>
+                <span>›</span>
+            </div>
+            <div class="more-item" onclick="alert('📊 Reports Clicked!')">
+                <span>📊 Reports</span>
+                <span>›</span>
+            </div>
+            <div class="more-item" onclick="alert('📝 Daily Parcha Clicked!')">
+                <span>📝 Daily Parcha</span>
+                <span>›</span>
+            </div>
+            <div class="more-item" onclick="showSettings()">
+                <span>⚙️ Settings</span>
+                <span>›</span>
+            </div>
+        </div>
     </div>
 
     <!-- BOTTOM NAVIGATION -->
@@ -322,7 +203,6 @@
             <label>More</label>
         </button>
     </nav>
-
 </div>
 
 <!-- MODAL -->
@@ -336,7 +216,6 @@
     </div>
 </div>
 
-<script src="config.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
